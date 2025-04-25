@@ -1,250 +1,393 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✨ Una Sorpresa para Cony ✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <title>Para Mi Amor Constanza 💐</title>
     <style>
-        :root {
-            --rosa: #ff9bb3;
-            --rosa-oscuro: #ff69b4;
-            --dorado: #f5d742;
-            --blanco: #fff9f9;
-        }
-        
-        /* Reset básico y centrado */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            min-height: 100vh;
+        /* === ESTILOS PANTALLA INICIO (TULIPÁN) === */
+        #intro-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f5c3d8 0%, #d885d3 100%);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #000000, #2d1b3a);
-            font-family: 'Montserrat', sans-serif;
-            color: var(--blanco);
-            text-align: center;
-            padding: 20px;
-            overflow-x: hidden;
+            z-index: 1000;
+            transition: opacity 1.5s;
         }
-
-        /* Contenedor principal (ahora bien centrado) */
-        .contenedor {
-            width: 100%;
-            max-width: 600px;
-            padding: 2.5rem;
-            backdrop-filter: blur(8px);
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            box-shadow: 0 0 30px rgba(255, 105, 180, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            margin: 0 auto; /* Centrado horizontal */
-        }
-
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--dorado);
-            text-shadow: 0 0 10px rgba(245, 215, 66, 0.5);
-            animation: latido 2s infinite;
-        }
-
-        .imagen-cony {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--rosa);
-            box-shadow: 0 0 30px var(--rosa-oscuro);
-            transition: all 0.3s ease;
-            margin: 0 auto 1.5rem; /* Centrado */
-            display: block; /* Para que el margin-auto funcione */
-        }
-
-        .imagen-cony:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px var(--rosa-oscuro);
-        }
-
-        .contador {
-            font-size: 1.5rem;
-            margin: 1.5rem 0;
-            font-weight: 600;
-        }
-
-        .contador span {
-            display: inline-block;
-            min-width: 60px;
-            padding: 0.5rem;
-            background: rgba(255, 105, 180, 0.2);
-            border-radius: 10px;
-            margin: 0 5px;
+        #tulipan {
+            width: 150px;
+            height: 200px;
+            position: relative;
+            cursor: pointer;
             transition: transform 0.3s;
         }
-
-        .contador span:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 105, 180, 0.4);
+        #tulipan:hover {
+            transform: scale(1.05);
         }
-
-        .mensaje {
-            font-style: italic;
+        #tulipan .petalo {
+            position: absolute;
+            width: 80px;
+            height: 100px;
+            background: linear-gradient(to bottom, #ff6b9d, #e84393);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            clip-path: ellipse(25% 40% at 50% 50%);
+            transform-origin: bottom center;
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        #tulipan .petalo:nth-child(1) { left: 35px; transform: rotate(0deg); }
+        #tulipan .petalo:nth-child(2) { left: 35px; transform: rotate(72deg); }
+        #tulipan .petalo:nth-child(3) { left: 35px; transform: rotate(144deg); }
+        #tulipan .petalo:nth-child(4) { left: 35px; transform: rotate(216deg); }
+        #tulipan .petalo:nth-child(5) { left: 35px; transform: rotate(288deg); }
+        #tulipan .tallo {
+            position: absolute;
+            width: 8px;
+            height: 120px;
+            background: linear-gradient(to bottom, #7ed56f, #28b485);
+            bottom: -120px;
+            left: 71px;
+            border-radius: 5px;
+        }
+        #intro-message {
+            margin-top: 100px;
+            font-family: 'Arial', cursive;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
             opacity: 0;
             transition: opacity 1s;
-            margin-top: 1rem;
+            font-size: 1.2em;
         }
 
-        #boton-secreto {
-            background: var(--rosa-oscuro);
+        /* === ESTILOS PÁGINA PRINCIPAL === */
+        #main-content {
+            display: none;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: opacity 2s;
+        }
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Arial', cursive;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ee75a5 0%, #ef0f8e 100%);
+            color: white;
+        }
+        h1 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 2.5em;
+            z-index: 100;
+            margin-bottom: 10px;
+        }
+        #counter {
+            font-size: 1.8em;
+            margin: 10px 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+        #message {
+            font-size: 1.5em;
+            max-width: 80%;
+            z-index: 100;
+            margin-bottom: 20px;
+            min-height: 80px;
+        }
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(235, 20, 95, 0.7);
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-100px) rotate(20deg); }
+        }
+        button {
+            background: #b30c0c;
             color: white;
             border: none;
-            padding: 0.8rem 1.5rem;
+            padding: 10px 20px;
+            font-size: 1.2em;
             border-radius: 50px;
-            font-size: 1rem;
             cursor: pointer;
-            margin-top: 1rem;
+            margin: 10px;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: all 0.3s;
-            box-shadow: 0 0 15px var(--rosa-oscuro);
-            display: inline-block; /* Para centrarlo */
         }
-
-        #boton-secreto:hover {
-            transform: scale(1.1);
-            background: var(--dorado);
-            box-shadow: 0 0 20px var(--dorado);
+        button:hover {
+            background: #ff4757;
+            transform: scale(1.05);
         }
-
-        /* Animaciones */
-        @keyframes latido {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        #photo-slider {
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            margin: 20px auto;
+            z-index: 100;
+            position: relative;
         }
-
-        /* Partículas de fondo */
-        .particula {
+        #photo-slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
             position: absolute;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: flotar linear infinite;
+            top: 0;
+            left: 0;
         }
-
-        @keyframes flotar {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-100vh) rotate(360deg); }
+        #photo-slider img.active {
+            display: block;
+            animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgb(52, 134, 153);
+            opacity: 0.7;
+            animation: confettiFall 5s linear forwards;
+            z-index: 1;
+        }
+        @keyframes confettiFall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+        #secret-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            z-index: 1000;
+            display: none;
+            max-width: 80%;
+            text-align: center;
+        }
+        @keyframes fadeOut {
+            to { opacity: 0; transform: scale(1.5); }
         }
     </style>
 </head>
 <body>
-    <!-- Efecto de partículas -->
-    <div id="particulas"></div>
-
-    <!-- Contenedor principal (ahora bien centrado) -->
-    <div class="contenedor">
-        <h1>Para Cony, con amor 💖</h1>
-        
-        <!-- Reemplaza "tu-imagen.jpg" con tu imagen -->
-        <img src="tu-imagen.jpg" alt="Cony" class="imagen-cony">
-        
-        <div class="contador" id="contador">
-            <span id="dias">00</span> días 
-            <span id="horas">00</span> horas 
-            <span id="minutos">00</span> minutos 
-            <span id="segundos">00</span> segundos
+    <!-- PANTALLA DE INICIO (TULIPÁN) -->
+    <div id="intro-screen">
+        <div id="tulipan">
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="tallo"></div>
         </div>
-        
-        <p class="mensaje" id="mensaje">¡Pronto será el gran día!</p>
-        
-        <button id="boton-secreto">Presiona para una sorpresa</button>
+        <p id="intro-message">Toca el tulipán para descubrir tu sorpresa...</p>
     </div>
 
-    <!-- Scripts -->
+    <!-- PÁGINA PRINCIPAL (oculta al inicio) -->
+    <div id="main-content">
+        <h1>¡Feliz 1 Año y 8 Meses Apestochitaa! 💌</h1>
+        <div id="counter"></div>
+        <p id="message"></p>
+        
+        <div id="photo-slider">
+            <img src="https://i.ibb.co/bgxHS7HV/foto.jpg" class="active" alt="Nuestra foto 1">
+        </div>
+        
+        <button onclick="changeMessage()">Nuevo Mensaje 💬</button>
+        <button onclick="showSecretMessage()">¡Te amo! 💣</button>
+
+        <!-- Música -->
+        <iframe style="border-radius:12px; margin-top: 20px;" 
+            src="https://open.spotify.com/embed/track/0xaFw2zDYf1rIJWl2dXiSF?utm_source=generator" 
+            width="100%" 
+            height="80" 
+            frameborder="0" 
+            allowfullscreen="" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+        </iframe>
+
+        <!-- Mensaje secreto -->
+        <div id="secret-message">
+            <h2>Para mi Apestochita 💖</h2>
+            <p>Eres el amor de mi vida y cada día contigo es un regalo. ¡Prometo amarte por siempre!</p>
+            <button onclick="hideSecretMessage()">Cerrar</button>
+        </div>
+    </div>
+
     <script>
-        // ===== CONFETI =====
-        function lanzarConfeti() {
-            confetti({
-                particleCount: 150,
-                spread: 70,
-                origin: { y: 0.6 },
-                colors: ['#ff69b4', '#ff9bb3', '#f5d742', '#ffffff']
-            });
-        }
+        // ===== INTERACCIÓN DEL TULIPÁN =====
+        let clicks = 0;
+        const tulipan = document.getElementById('tulipan');
+        const introMessage = document.getElementById('intro-message');
+        const petals = document.querySelectorAll('.petalo');
+        const introScreen = document.getElementById('intro-screen');
+        const mainContent = document.getElementById('main-content');
 
-        // ===== CONTADOR REGRESIVO =====
-        function actualizarContador() {
-            const ahora = new Date();
-            const fechaObjetivo = new Date("2024-12-24T00:00:00"); // Cambia esta fecha
-            const diferencia = fechaObjetivo - ahora;
+        // Mostrar primer mensaje después de 1 segundo
+        setTimeout(() => {
+            introMessage.style.opacity = 1;
+        }, 1000);
 
-            if (diferencia <= 0) {
-                document.getElementById('contador').innerHTML = '<span>¡Es hoy!</span>';
-                document.getElementById('mensaje').style.opacity = '1';
-                document.getElementById('mensaje').textContent = '¡La espera terminó! 💝';
-                lanzarConfeti();
-                return;
+        tulipan.addEventListener('click', () => {
+            clicks++;
+            
+            // Mensajes que aparecen con cada clic
+            const messages = [
+                "¿Lista para tu sorpresa?",
+                "¡Un poquito más!",
+                "¡Aquí vamos mi amor!"
+            ];
+            
+            if (clicks <= 3) {
+                introMessage.textContent = messages[clicks - 1];
+                
+                // Animar pétalos para que se abran
+                petals.forEach(petal => {
+                    petal.style.clipPath = `ellipse(${25 + clicks * 15}% ${40 + clicks * 15}% at 50% 50%)`;
+                    const currentRot = parseInt(petal.style.transform.match(/\d+/)[0]);
+                    petal.style.transform = `rotate(${currentRot - 15}deg)`;
+                });
+                
+                // Al tercer clic: ¡transición a la página principal!
+                if (clicks === 3) {
+                    setTimeout(() => {
+                        introScreen.style.opacity = 0;
+                        setTimeout(() => {
+                            introScreen.style.display = 'none';
+                            mainContent.style.display = 'flex';
+                            setTimeout(() => mainContent.style.opacity = 1, 100);
+                            
+                            // Efecto de telón dorado
+                            const curtain = document.createElement('div');
+                            curtain.style.position = 'fixed';
+                            curtain.style.top = '0';
+                            curtain.style.left = '0';
+                            curtain.style.width = '100%';
+                            curtain.style.height = '100%';
+                            curtain.style.background = 'linear-gradient(45deg, #ffd700, #f9d423)';
+                            curtain.style.zIndex = '999';
+                            curtain.style.opacity = '1';
+                            curtain.style.animation = 'fadeOut 2s forwards';
+                            document.body.appendChild(curtain);
+                            
+                            setTimeout(() => curtain.remove(), 2000);
+                        }, 1500);
+                    }, 1000);
+                }
             }
-
-            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-            const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-
-            document.getElementById('dias').textContent = dias.toString().padStart(2, '0');
-            document.getElementById('horas').textContent = horas.toString().padStart(2, '0');
-            document.getElementById('minutos').textContent = minutos.toString().padStart(2, '0');
-            document.getElementById('segundos').textContent = segundos.toString().padStart(2, '0');
-        }
-
-        // ===== BOTÓN SECRETO =====
-        document.getElementById('boton-secreto').addEventListener('click', () => {
-            lanzarConfeti();
-            document.getElementById('mensaje').style.opacity = '1';
-            document.getElementById('mensaje').textContent = 'Eres la persona más especial en mi vida 🌸';
         });
 
-        // ===== PARTÍCULAS DE FONDO =====
-        function crearParticulas() {
-            const particulasContainer = document.getElementById('particulas');
-            const cantidad = 30;
+        // ===== PÁGINA PRINCIPAL =====
+        // Contador de tiempo juntos
+        const startDate = new Date('2023-08-25');
+        function updateCounter() {
+            const now = new Date();
+            const diff = now - startDate;
+            const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+            const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+            const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+            
+            document.getElementById('counter').innerHTML = `
+                💖 ${years} año, ${months} meses y ${days} días juntos 💖
+            `;
+        }
+        setInterval(updateCounter, 1000);
+        updateCounter();
 
-            for (let i = 0; i < cantidad; i++) {
-                const particula = document.createElement('div');
-                particula.classList.add('particula');
-                
-                const size = Math.random() * 5 + 2;
-                const posX = Math.random() * window.innerWidth;
-                const delay = Math.random() * 5;
-                const duration = Math.random() * 10 + 10;
-                
-                particula.style.width = `${size}px`;
-                particula.style.height = `${size}px`;
-                particula.style.left = `${posX}px`;
-                particula.style.bottom = `-10px`;
-                particula.style.animationDelay = `${delay}s`;
-                particula.style.animationDuration = `${duration}s`;
-                particula.style.opacity = Math.random() * 0.5 + 0.1;
-                
-                particulasContainer.appendChild(particula);
+        // Corazones flotantes
+        function createHearts() {
+            const heart = document.createElement('div');
+            heart.innerHTML = ['❤️', '🧡', '💛', '💚', '💙', '💜'][Math.floor(Math.random() * 6)];
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = Math.random() * 100 + 'vh';
+            heart.style.fontSize = Math.random() * 30 + 20 + 'px';
+            heart.style.animationDuration = Math.random() * 4 + 3 + 's';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+        setInterval(createHearts, 300);
+
+        // Mensajes románticos con efecto de máquina de escribir
+        const messages = [
+            "Gracias apestochita por todo lo hermoso que me haz hecho pasar en este año y ocho meses juntos, espero sean muchisimos mas juntos, Te amo demaciado miamorcito, Teamooooooo<3.",
+            "Gracias por tanto miamorcito no tienes idea de lo feliz que me haces y lo feliz que te quiero hacer por toda la vida.",
+            "Eres y seras el amor de mi vida, y espero poder entablar la familia que tanto queremos algun dia, TEAMO MI APESTOCHITA."
+        ];
+        let currentMessage = 0;
+        
+        function typeWriter(text, i, element) {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+                setTimeout(() => typeWriter(text, i, element), 20);
             }
         }
+        
+        function changeMessage() {
+            const messageElement = document.getElementById('message');
+            messageElement.textContent = '';
+            currentMessage = (currentMessage + 1) % messages.length;
+            typeWriter(messages[currentMessage], 0, messageElement);
+        }
+        
+        // Iniciar primer mensaje al cargar la página principal
+        setTimeout(() => {
+            if (mainContent.style.opacity === '1') {
+                typeWriter(messages[0], 0, document.getElementById('message'));
+            }
+        }, 2100);
 
-        // ===== INICIALIZAR =====
-        window.onload = function() {
-            crearParticulas();
-            actualizarContador();
-            setInterval(actualizarContador, 1000);
-            lanzarConfeti();
-        };
+        // Mensaje secreto con confeti
+        function showSecretMessage() {
+            document.getElementById('secret-message').style.display = 'block';
+            for (let i = 0; i < 150; i++) {
+                createConfetti();
+            }
+        }
+        
+        function hideSecretMessage() {
+            document.getElementById('secret-message').style.display = 'none';
+        }
+        
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
     </script>
-
-    <!-- Script para confeti -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1"></script>
 </body>
 </html>
