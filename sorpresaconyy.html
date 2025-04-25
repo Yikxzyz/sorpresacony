@@ -1,181 +1,391 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Para Mi Amor Constanza Luz Camila Gallego Alcantara 💖</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi Xanxita💙</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
+        :root {
+            --color-primary: #006994;
+            --color-secondary: #40E0D0;
+            --color-accent: #ff6b8b;
+            --text-light: #fff;
+            --text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
             margin: 0;
-            overflow: hidden;
-            font-family: 'Arial', cursive;
-            text-align: center;
-            height: 100vh;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pacifico', cursive;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            min-height: 100vh;
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Pantalla inicial */
+        .flower-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #ee75a5 0%, #ef0f8e 100%);
-            position: relative;
-            color: white;
-            transition: background 1s;
-        }
-        body.night-mode {
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-        }
-        h1 {
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            font-size: 2.5em;
+            background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
             z-index: 100;
-            margin-bottom: 10px;
+            transition: opacity 1s ease, visibility 1s ease;
         }
-        #counter {
-            font-size: 1.8em;
-            margin: 10px 0;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px 20px;
-            border-radius: 50px;
-        }
-        #message {
-            font-size: 1.5em;
-            max-width: 80%;
-            z-index: 100;
-            margin-bottom: 20px;
-            min-height: 80px;
-        }
-        .heart {
-            position: absolute;
-            font-size: 20px;
-            color: rgba(235, 20, 95, 0.7);
-            animation: float 6s ease-in-out infinite;
-            pointer-events: none;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-100px) rotate(20deg); }
-        }
-        button {
-            background: #b30c0c;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            border-radius: 50px;
+
+        .flower-container {
+            text-align: center;
             cursor: pointer;
-            margin: 10px;
-            z-index: 100;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s;
+            transition: transform 0.3s ease;
         }
-        button:hover {
-            background: #ff4757;
+
+        .flower-container:hover {
             transform: scale(1.05);
         }
-        #photo-slider {
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+        .flower {
+            width: 120px;
+            height: 120px;
             margin: 20px auto;
-            z-index: 100;
             position: relative;
         }
-        #photo-slider img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        #photo-slider img.active {
-            display: block;
-            animation: fadeIn 1s;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: rgb(52, 134, 153);
-            opacity: 0.7;
-            animation: confettiFall 5s linear forwards;
-            z-index: 1;
-        }
-        @keyframes confettiFall {
-            0% { transform: translateY(-100vh) rotate(0deg); }
-            100% { transform: translateY(100vh) rotate(360deg); }
-        }
+
         .petal {
             position: absolute;
-            width: 20px;
-            height: 20px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff69b4"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
-            background-size: cover;
-            animation: petalFall linear forwards;
-            pointer-events: none;
-            z-index: 1;
+            width: 50px;
+            height: 70px;
+            background: #ffb6c1;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            transform-origin: center bottom;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0.8;
         }
-        @keyframes petalFall {
-            to { transform: translateY(100vh) rotate(360deg); }
-        }
-        .cursor-heart {
+
+        .center {
             position: absolute;
-            font-size: 24px;
-            pointer-events: none;
-            z-index: 9999;
-            animation: heartbeat 1s infinite;
-        }
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.3); }
-        }
-        .star {
-            position: absolute;
-            background-color: white;
+            width: 35px;
+            height: 35px;
+            background: radial-gradient(circle, #f8e8ee, #f5c6d9);
             border-radius: 50%;
-            animation: twinkle 2s infinite alternate;
-            pointer-events: none;
-            z-index: 0;
-        }
-        @keyframes twinkle {
-            from { opacity: 0.3; }
-            to { opacity: 1; }
-        }
-        #secret-message {
-            position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            color: white;
-            z-index: 1000;
+            z-index: 10;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .instruction {
+            margin-top: 30px;
+            font-size: 1.8em;
+            color: var(--text-light);
+            text-shadow: var(--text-shadow);
+            opacity: 0;
+            animation: fadeIn 2s ease 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Contenido principal */
+        .main-content {
             display: none;
-            max-width: 80%;
+            padding: 2rem 1rem;
             text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            animation: fadeInContent 1.5s ease;
+        }
+
+        @keyframes fadeInContent {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            text-shadow: var(--text-shadow);
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            to { transform: scale(1.05); }
+        }
+
+        .love-message {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin: 2rem 0;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Carrusel */
+        .carousel-container {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        #prevBtn { left: 20px; }
+        #nextBtn { right: 20px; }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: var(--text-light);
+            transform: scale(1.2);
+        }
+
+        /* Botones */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+            color: var(--text-light);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Pacifico', cursive;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            min-width: 200px;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+            transition: all 0.3s;
+        }
+
+        .btn:hover::after {
+            left: 100%;
+        }
+
+        /* Efectos especiales */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: var(--color-accent);
+            animation: float 4s ease-in-out forwards;
+        }
+
+        @keyframes float {
+            to {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Control de música */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+
+        .music-control:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .music-control i {
+            color: var(--text-light);
+            font-size: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .carousel img {
+                height: 400px;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1.1rem;
+                min-width: 160px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel img {
+                height: 300px;
+            }
+            
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .instruction {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>¡Feliz 1 Año y 8 Meses Apestochitaa! 💌</h1>
-    <div id="counter"></div>
-    <p id="message"></p>
-    
-    <!-- Slider de fotos -->
-    <div id="photo-slider">
-        <img src="https://i.ibb.co/bgxHS7HV/foto.jpg" class="active" alt="Nuestra foto 1">
-        <!-- Añade más fotos aquí si quieres -->
+    <!-- Pantalla inicial -->
+    <div class="flower-screen" id="flowerScreen">
+        <div class="flower-container" id="flowerContainer">
+            <div class="flower" id="flower">
+                <!-- Pétalos generados por JS -->
+            </div>
+            <div class="center"></div>
+            <p class="instruction">Toca la flor, mi amor 💙</p>
+        </div>
     </div>
-    
-    <button onclick="changeMessage()">Nuevo Mensaje 💬</button>
-    <button onclick="showSecretMessage()">¡Te amo! 💣</button>
-    <button onclick="toggleNightMode()">Modo Noche 🌙</button>
+
+    <!-- Contenido principal -->
+    <div class="main-content" id="mainContent">
+        <h1>Para mi Apestochita 💙</h1>
+        <p class="love-message">"Eres la estrella mas hermnosa de mi constelacion"</p>
+        <p class="love-message">"Para la mas hermosa"</p>
+        
+        <!-- Carrusel de fotos -->
+        <div class="carousel-container">
+            <div class="carousel" id="carousel">
+                <img src="https://i.ibb.co/DT3RYy4/foto1.jpg" alt="Nuestra foto 1" loading="lazy">
+                <img src="https://i.ibb.co/23vdyFmr/foto2.jpg" alt="Nuestra foto 2" loading="lazy">
+                <img src="https://i.ibb.co/VcY1rMMC/foto3.jpg" alt="Nuestra foto 3" loading="lazy">
+                <img src="https://i.ibb.co/JWHLdRK6/foto4.jpg" alt="Nuestra foto 4" loading="lazy">
+                <img src="https://i.ibb.co/vxYkMW5r/foto5.jpg" alt="Nuestra foto 5" loading="lazy">
+                <img src="https://i.ibb.co/YF59ZMJ4/foto6.jpg" alt="Nuestra foto 6" loading="lazy">
+                <img src="https://i.ibb.co/11Q0P8T/foto7.jpg" alt="Nuestra foto 7" loading="lazy">
+                <img src="https://i.ibb.co/5xsZdzYy/foto8.jpg" alt="Nuestra foto 8" loading="lazy">
+                <img src="https://i.ibb.co/yFhjbZCq/foto9.jpg" alt="Nuestra foto 9" loading="lazy">
+            </div>
+            <button class="carousel-btn" id="prevBtn" aria-label="Foto anterior">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn" id="nextBtn" aria-label="Foto siguiente">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="carousel-dots" id="carouselDots" role="tablist"></div>
+        </div>
+
+        <div class="btn-container">
+            <button class="btn" id="surpriseBtn">¡Toca para una sorpresa!</button>
+            <button class="btn" id="loveBtn">¿Por qué te amo?</button>
+            <button class="btn" id="memoryBtn">Nuestros recuerdos</button>
+        </div>
+    </div>
+
+    <div class="hearts" id="heartsContainer"></div>
 
     <!-- Música -->
     <iframe style="border-radius:12px; margin-top: 20px;" 
@@ -187,159 +397,271 @@
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
     </iframe>
 
-    <!-- Mensaje secreto -->
-    <div id="secret-message">
-        <h2>Para mi Apestochita 💖</h2>
-        <p>Eres el amor de mi vida y cada día contigo es un regalo. ¡Prometo amarte por siempre!</p>
-        <button onclick="hideSecretMessage()">Cerrar</button>
-    </div>
-
     <script>
-        // Contador de tiempo juntos
-        const startDate = new Date('2023-08-25');
-        function updateCounter() {
-            const now = new Date();
-            const diff = now - startDate;
-            const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
-            const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
-            const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
-            
-            document.getElementById('counter').innerHTML = `
-                💖 ${years} año, ${months} meses y ${days} días juntos 💖
-            `;
-        }
-        setInterval(updateCounter, 1000);
-        updateCounter();
+        // Variables globales
+        let currentSlide = 0;
+        let isMusicPlaying = false;
+        const music = document.getElementById('bgMusic');
+        const musicControl = document.getElementById('musicControl');
 
-        // Corazones flotantes
-        function createHearts() {
-            const heart = document.createElement('div');
-            heart.innerHTML = ['❤️', '🧡', '💛', '💚', '💙', '💜'][Math.floor(Math.random() * 6)];
-            heart.className = 'heart';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.top = Math.random() * 100 + 'vh';
-            heart.style.fontSize = Math.random() * 30 + 20 + 'px';
-            heart.style.animationDuration = Math.random() * 4 + 3 + 's';
-            document.body.appendChild(heart);
-            
-            setTimeout(() => {
-                heart.remove();
-            }, 6000);
-        }
-        setInterval(createHearts, 300);
-
-        // Pétalos de rosas
-        function createPetals() {
-            const petal = document.createElement('div');
-            petal.className = 'petal';
-            petal.style.left = Math.random() * 100 + 'vw';
-            petal.style.width = Math.random() * 20 + 10 + 'px';
-            petal.style.height = petal.style.width;
-            petal.style.animationDuration = Math.random() * 5 + 5 + 's';
-            document.body.appendChild(petal);
-            
-            setTimeout(() => {
-                petal.remove();
-            }, 8000);
-        }
-        setInterval(createPetals, 200);
-
-        // Corazones que siguen el cursor
-        document.addEventListener('mousemove', (e) => {
-            const heart = document.createElement('div');
-            heart.className = 'cursor-heart';
-            heart.innerHTML = '❤️';
-            heart.style.left = e.pageX + 'px';
-            heart.style.top = e.pageY + 'px';
-            document.body.appendChild(heart);
-            
-            setTimeout(() => {
-                heart.remove();
-            }, 1000);
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', () => {
+            createFlower();
+            initCarousel();
+            setupEventListeners();
         });
 
-        // Estrellas en modo noche
-        function createStars() {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + 'vw';
-            star.style.top = Math.random() * 100 + 'vh';
-            star.style.width = Math.random() * 3 + 1 + 'px';
-            star.style.height = star.style.width;
-            star.style.animationDelay = Math.random() * 2 + 's';
-            document.body.appendChild(star);
-        }
-
-        // Modo noche
-        function toggleNightMode() {
-            document.body.classList.toggle('night-mode');
-            if (document.body.classList.contains('night-mode')) {
-                for (let i = 0; i < 100; i++) createStars();
-            } else {
-                document.querySelectorAll('.star').forEach(star => star.remove());
-            }
-        }
-
-        // Mensajes románticos con efecto de máquina de escribir
-        const messages = [
-            "Gracias apestochita por todo lo hermoso que me haz hecho pasar en este año y ocho meses juntos, espero sean muchisimos mas juntos, Te amo demaciado miamorcito, Teamooooooo<3.",
-            "Gracias por tanto miamorcito no tienes idea de lo feliz que me haces y lo feliz que te quiero hacer por toda la vida.",
-            "Eres y seras el amor de mi vida, y espero poder entablar la familia que tanto queremos algun dia, TEAMO MI APESTOCHITA."
-        ];
-        let currentMessage = 0;
-        
-        function typeWriter(text, i, element) {
-            if (i < text.length) {
-                element.textContent += text.charAt(i);
-                i++;
-                setTimeout(() => typeWriter(text, i, element), 20);
-            }
-        }
-        
-        function changeMessage() {
-            const messageElement = document.getElementById('message');
-            messageElement.textContent = '';
-            currentMessage = (currentMessage + 1) % messages.length;
-            typeWriter(messages[currentMessage], 0, messageElement);
-        }
-        
-        // Iniciar primer mensaje
-        typeWriter(messages[0], 0, document.getElementById('message'));
-
-        // Carrusel automático de fotos
-        setInterval(() => {
-            const photos = document.querySelectorAll('#photo-slider img');
-            if (photos.length > 1) {
-                const current = document.querySelector('#photo-slider img.active');
-                let next = current.nextElementSibling || photos[0];
-                current.classList.remove('active');
-                next.classList.add('active');
-            }
-        }, 5000);
-
-        // Mensaje secreto con confeti
-        function showSecretMessage() {
-            document.getElementById('secret-message').style.display = 'block';
-            for (let i = 0; i < 150; i++) {
-                createConfetti();
-            }
-        }
-        
-        function hideSecretMessage() {
-            document.getElementById('secret-message').style.display = 'none';
-        }
-        
-        function createConfetti() {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti';
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-            confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
-            document.body.appendChild(confetti);
+        // Crear flor
+        function createFlower() {
+            const flower = document.getElementById('flower');
+            const petalCount = 12;
             
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                const angle = (360 / petalCount) * i;
+                petal.style.transform = `rotate(${angle}deg) translateY(-25px)`;
+                
+                // Variación de color
+                const hue = 340 + Math.random() * 20;
+                petal.style.background = `hsl(${hue}, 100%, 85%)`;
+                
+                flower.appendChild(petal);
+            }
+        }
+
+        // Inicializar carrusel
+        function initCarousel() {
+            const carousel = document.getElementById('carousel');
+            const dotsContainer = document.getElementById('carouselDots');
+            const slides = document.querySelectorAll('.carousel img');
+            
+            // Crear puntos indicadores
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                dot.setAttribute('role', 'tab');
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+            
+            updateCarousel();
+        }
+
+        // Actualizar carrusel
+        function updateCarousel() {
+            const carousel = document.getElementById('carousel');
+            const dots = document.querySelectorAll('.dot');
+            const slides = document.querySelectorAll('.carousel img');
+            
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Navegación del carrusel
+        function goToSlide(index) {
+            const slides = document.querySelectorAll('.carousel img');
+            currentSlide = (index + slides.length) % slides.length;
+            updateCarousel();
+        }
+
+        function nextSlide() {
+            const slides = document.querySelectorAll('.carousel img');
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            const slides = document.querySelectorAll('.carousel img');
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateCarousel();
+        }
+
+        // Configurar event listeners
+        function setupEventListeners() {
+            // Flor interactiva
+            document.getElementById('flowerContainer').addEventListener('click', openFlower);
+            
+            // Botones del carrusel
+            document.getElementById('prevBtn').addEventListener('click', prevSlide);
+            document.getElementById('nextBtn').addEventListener('click', nextSlide);
+            
+            // Botones interactivos
+            document.getElementById('surpriseBtn').addEventListener('click', showSurprise);
+            document.getElementById('loveBtn').addEventListener('click', showLoveReason);
+            document.getElementById('memoryBtn').addEventListener('click', showMemory);
+            
+            // Control de música
+            musicControl.addEventListener('click', toggleMusic);
+            
+            // Teclado
+            document.addEventListener('keydown', handleKeyPress);
+        }
+
+        // Animación de apertura de flor
+        function openFlower() {
+            const petals = document.querySelectorAll('.petal');
+            const flowerContainer = document.getElementById('flowerContainer');
+            const flowerScreen = document.getElementById('flowerScreen');
+            
+            // Animación de pétalos
+            petals.forEach((petal, index) => {
+                setTimeout(() => {
+                    petal.style.transform += ' scale(1.8)';
+                    petal.style.opacity = '1';
+                    petal.style.filter = 'brightness(1.1)';
+                }, index * 50);
+            });
+            
+            // Efecto de brillo
+            flowerContainer.style.transform = 'scale(1.1)';
+            
+            // Transición a contenido principal
             setTimeout(() => {
-                confetti.remove();
-            }, 5000);
+                flowerScreen.style.opacity = '0';
+                flowerScreen.style.visibility = 'hidden';
+                
+                setTimeout(() => {
+                    document.getElementById('mainContent').style.display = 'block';
+                    createHearts(30); // Lluvia de corazones al entrar
+                }, 500);
+            }, 1200);
+        }
+
+        // Funciones de botones interactivos
+        function showSurprise() {
+            const messages = [
+                "¡Eres la persona más especial en mi vida! 💌",
+                "Cada día a tu lado es un regalo 🎁",
+                "Tu sonrisa es mi felicidad 😊",
+                "No hay nadie como tú en el mundo entero 🌎"
+            ];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            
+            // Efecto en el botón
+            const btn = document.getElementById('surpriseBtn');
+            btn.textContent = "💖 Te amo 💖";
+            setTimeout(() => {
+                btn.textContent = "¡Toca para una sorpresa!";
+            }, 2000);
+            
+            createHearts(15);
+            alert(randomMessage);
+        }
+
+        function showLoveReason() {
+            const reasons = [
+                "Por tu sonrisa que ilumina mi día",
+                "Por tu corazón bondadoso y puro",
+                "Por hacerme feliz con los pequeños detalles",
+                "Por ser exactamente como eres",
+                "Por tu forma de entender mis silencios",
+                "Porque contigo el tiempo vuela",
+                "Por tu capacidad de hacerme reír",
+                "Porque eres mi persona favorita"
+            ];
+            const randomReason = reasons[Math.floor(Math.random() * reasons.length)];
+            
+            // Efecto en el botón
+            const btn = document.getElementById('loveBtn');
+            btn.style.background = 'linear-gradient(to right, #ff6b8b, #ff8e9e)';
+            setTimeout(() => {
+                btn.style.background = 'linear-gradient(to right, var(--color-primary), var(--color-secondary))';
+            }, 1000);
+            
+            createHearts(15);
+            alert(`💖 ${randomReason} 💖`);
+        }
+
+        function showMemory() {
+            const memories = [
+                "El día que nos conocimos...",
+                "Nuestra primera cita inolvidable",
+                "Esa vez que reímos sin parar",
+                "Todos los momentos que hemos compartido"
+            ];
+            const randomMemory = memories[Math.floor(Math.random() * memories.length)];
+            
+            // Efecto en el botón
+            const btn = document.getElementById('memoryBtn');
+            btn.classList.add('pulse');
+            setTimeout(() => {
+                btn.classList.remove('pulse');
+            }, 1000);
+            
+            createHearts(15);
+            alert(`📸 ${randomMemory} (Pronto agregaré nuestras fotos especiales aquí)`);
+        }
+
+        // Control de música
+        function toggleMusic() {
+            isMusicPlaying = !isMusicPlaying;
+            
+            if (isMusicPlaying) {
+                music.play();
+                musicControl.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                music.pause();
+                musicControl.innerHTML = '<i class="fas fa-music"></i>';
+            }
+        }
+
+        // Corazones flotantes
+        function createHearts(count) {
+            const heartsContainer = document.getElementById('heartsContainer');
+            
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = '❤️';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.top = '100vh';
+                    heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+                    heart.style.animationDelay = (Math.random() * 2) + 's';
+                    heart.style.fontSize = (20 + Math.random() * 30) + 'px';
+                    heart.style.opacity = '1';
+                    
+                    heartsContainer.appendChild(heart);
+                    
+                    // Eliminar después de la animación
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 4000);
+                }, i * 100);
+            }
+        }
+
+        // Manejo de teclado
+        function handleKeyPress(e) {
+            // Flechas para navegar el carrusel
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+            
+            // Espacio para música
+            if (e.key === ' ') {
+                e.preventDefault();
+                toggleMusic();
+            }
+            
+            // Easter egg con código Konami
+            const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 
+                              'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+            let konamiIndex = 0;
+            
+            if (e.key === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    konamiIndex = 0;
+                    alert('¡Eres la reina de mi corazón! 👑💖');
+                    createHearts(50);
+                }
+            } else {
+                konamiIndex = 0;
+            }
         }
     </script>
 </body>
